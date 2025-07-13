@@ -1,0 +1,81 @@
+# -------------------- Fancy Tmux Config --------------------
+
+##### Set Prefix Key #####
+set -g prefix C-a
+bind C-a send-prefix
+unbind C-b
+
+##### Quick Window Controls #####
+unbind C-t
+bind -n C-t new-window
+
+unbind C-p
+bind -n C-p previous-window
+
+unbind C-n
+bind -n C-n next-window
+
+##### Pane Navigation with Shift + Arrows #####
+bind -n S-Left select-pane -L
+bind -n S-Right select-pane -R
+bind -n S-Up select-pane -U
+bind -n S-Down select-pane -D
+
+##### Activity Monitoring #####
+setw -g monitor-activity on
+set -g visual-activity on
+
+##### History Scrollback Limit #####
+set -g history-limit 100000
+
+##### Zoom Pane (Ctrl + Alt + Z) #####
+unbind C-M-z
+bind -n C-M-z resize-pane -Z
+
+##### Copy Mode & Paste Buffer #####
+unbind C-q
+bind -n C-q copy-mode
+bind -n C-M-] paste-buffer
+
+##### Splitting Panes #####
+bind -n C-M-v split-window -v
+bind -n C-M-g split-window -h
+bind -n C-M-x kill-pane
+
+##### Clock Mode Shortcut #####
+unbind C-M-c
+bind -n C-M-c clock
+
+##### Escape Timing #####
+set -sg escape-time 10
+
+##### Neon Cyberpunk Color Scheme #####
+
+# Clock and Modes
+setw -g clock-mode-colour colour127
+setw -g mode-style 'fg=colour201 bg=colour235 bold'
+
+# Pane Borders
+set -g pane-border-style 'fg=colour239 bg=colour234'
+set -g pane-active-border-style 'bg=colour234 fg=colour208'
+
+# Status Bar
+set -g status-position bottom
+set -g status-justify left
+set -g status-style 'bg=colour235 fg=colour244 dim'
+set -g status-left ''
+set -g status-right '#[fg=colour233,bg=colour91] %d/%m #[fg=colour233,bg=colour208] %H:%M:%S '
+set -g status-right-length 50
+set -g status-left-length 20
+
+# Window Titles
+setw -g window-status-current-style 'fg=colour201 bg=colour91 bold'
+setw -g window-status-current-format ' #I#[fg=colour249]:#[fg=colour255]#W#[fg=colour249]#F '
+setw -g window-status-style 'fg=colour208 bg=colour235'
+setw -g window-status-format ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F '
+setw -g window-status-bell-style 'fg=colour255 bg=colour201 bold'
+
+# Messages (copy-mode, prompts)
+set -g message-style 'fg=colour200 bg=colour127 bold'
+
+# -------------------- End of Config --------------------
